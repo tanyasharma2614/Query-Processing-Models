@@ -1,0 +1,10 @@
+/Users/tanyasharma/Desktop/Rutgers/Fall 22/DBMS/Assignment 2/build/CMakeFiles/seq-scan-test.dir
+/Users/tanyasharma/Desktop/Rutgers/Fall 22/DBMS/Assignment 2/build/CMakeFiles/filter-seq-scan-test.dir
+/Users/tanyasharma/Desktop/Rutgers/Fall 22/DBMS/Assignment 2/build/CMakeFiles/nested-loop-join-test.dir
+/Users/tanyasharma/Desktop/Rutgers/Fall 22/DBMS/Assignment 2/build/CMakeFiles/hash-join-test.dir
+/Users/tanyasharma/Desktop/Rutgers/Fall 22/DBMS/Assignment 2/build/CMakeFiles/complex-test.dir
+/Users/tanyasharma/Desktop/Rutgers/Fall 22/DBMS/Assignment 2/build/CMakeFiles/edit_cache.dir
+/Users/tanyasharma/Desktop/Rutgers/Fall 22/DBMS/Assignment 2/build/CMakeFiles/rebuild_cache.dir
+/Users/tanyasharma/Desktop/Rutgers/Fall 22/DBMS/Assignment 2/build/src/CMakeFiles/EXECUTOR.dir
+/Users/tanyasharma/Desktop/Rutgers/Fall 22/DBMS/Assignment 2/build/src/CMakeFiles/edit_cache.dir
+/Users/tanyasharma/Desktop/Rutgers/Fall 22/DBMS/Assignment 2/build/src/CMakeFiles/rebuild_cache.dir
