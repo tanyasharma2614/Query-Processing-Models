@@ -21,10 +21,24 @@ void NestedLoopJoinExecutor::Init() {
 bool NestedLoopJoinExecutor::Next(Tuple *tuple) { 
   Tuple t1;
   Tuple t2;
-  while(left_->Next(&t1)){
-    while(right_->Next(&t2)){
-      *tuple=Tuple(t1);
-      return true;
+  if(join_key_.compare("val1")==0){
+     while(left_->Next(&t1)){
+      right_->Init();
+      while(right_->Next(&t2)){
+        *tuple=Tuple(t1);
+        if(t1.val1==t2.val1)
+        return true;
+      }
+    }
+  }
+   if(join_key_.compare("val2")==0){
+      while(left_->Next(&t1)){
+      right_->Init();
+      while(right_->Next(&t2)){
+        *tuple=Tuple(t1);
+        if(t1.val2.compare(t2.val2)==0)
+        return true;
+      }
     }
   }
   return false;
