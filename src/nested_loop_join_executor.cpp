@@ -41,6 +41,16 @@ bool NestedLoopJoinExecutor::Next(Tuple *tuple) {
       }
     }
   }
+   if(join_key_.compare("id")==0){
+      while(left_->Next(&t1)){
+      right_->Init();
+      while(right_->Next(&t2)){
+        *tuple=Tuple(t1);
+        if(t1.id==t2.id)
+        return true;
+      }
+    }
+  }
   return false;
   
 }
