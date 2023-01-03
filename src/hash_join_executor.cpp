@@ -15,32 +15,59 @@ HashJoinExecutor::HashJoinExecutor(AbstractExecutor *left_child_executor,
 void HashJoinExecutor::Init(){
   left_->Init();
   right_->Init();
-};
 
-bool HashJoinExecutor::Next(Tuple *tuple) { 
-  
   /*building hash table for outer table (left child executor)*/
   //build
+  SimpleHashJoinHashTable newTable;
+  ht=newTable;
   Tuple t1;
-  while(right_->Next(&t1)){
+  while(left_->Next(&t1)){
     hash_t h1=hash_fn_->GetHash(t1);
     ht.Insert(h1,t1);
 
   }
+  flag=true;
+  i=0;
+};
 
+bool HashJoinExecutor::Next(Tuple *tuple) { 
+
+  if(flag){
   /*iterating through inner table and checking for matching hashes with hash table*/
   //probe
   Tuple t2;
-  while(left_->Next(&t2)){
-    vector<Tuple> vt;
+
+  while(right_->Next(&t2)){
     hash_t h2=hash_fn_->GetHash(t2);
     ht.GetValue(h2,&vt);
-    *tuple=Tuple(t2);
-    if(!vt.empty())
+
+    if(!vt.empty()){
+      //check for multiple matches 
+      if(vt.size()>1){
+        flag=false;
+        i=1;
+      }
+      *tuple=vt.front();
       return true;
+    }
+
   }
 
   return false;
+  }
+
+  //multiple matches
+  else{
+    i++;
+    
+    //find how many matches
+    if(i==vt.size()){
+      flag=true;
+    }
+    *tuple=Tuple(vt[i-1]);
+    return true;
+  }
+
 
 }
 

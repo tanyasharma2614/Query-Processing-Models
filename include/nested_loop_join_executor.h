@@ -37,4 +37,6 @@ class NestedLoopJoinExecutor : public AbstractExecutor {
   AbstractExecutor *left_;
   AbstractExecutor *right_;
   std::string join_key_;
+  bool flag=false;
+  Tuple t;
 };
